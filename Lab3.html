@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Number Guessing Game</title>
+</head>
+<body>
+    <h1>113306022_Lab3_Number Guessing Game</h1>
+    <div id="game-result"></div>
+    <script>
+        const targetNumber = Math.floor(Math.random() * 100) + 1;
+        let attemptsLeft = 7;
+        const resultDiv = document.getElementById("game-result");
+
+        while (attemptsLeft > 0) {
+            
+            let guess = parseInt(window.prompt("請輸入 1~100 之間的數字 還剩下7次機會"));
+
+            
+            if (isNaN(guess) || guess < 1 || guess > 100) {
+                alert("請輸入 1~100 之間的有效數字！");
+                continue; 
+            }
+
+            
+            if (guess === targetNumber) {
+                alert("恭喜你猜對了!");
+                resultDiv.innerHTML = '<img src="correct.jpg" alt="Correct" />';
+                break;
+            } else if (guess > targetNumber) {
+                alert("太高了!");
+            } else {
+                alert("太低了!");
+            }
+
+            
+            attemptsLeft--;
+
+            
+            if (attemptsLeft === 0) {
+                alert("很遺憾你用完所有機會了。正確答案是:" + targetNumber);
+                resultDiv.innerHTML = '<img src="wrong.jpg" alt="Wrong" />';
+            }
+        }
+    </script>
+</body>
+</html>
